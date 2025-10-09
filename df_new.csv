@@ -60,3 +60,16 @@ age,gender,device_type,daily_hours,session_length,breaks,font_size,brightness,da
 19,male,mobile,3,30,3,medium,medium,yes,1,56,below_eye,normal,1,4,3
 19,male,laptop,7,120,5,small,high,yes,5,25,eye_level,dim,4,1,1
 20,male,mobile,3,40,3,small,medium,yes,1,35,eye_level,normal,3,1,1
+21,male,mobile,5,100,3,medium,low,yes,4,30,below_eye,normal,4,1,1
+20,male,mobile,7,40,5,small,medium,no,6,30,below_eye,normal,3,1,3
+20,male,laptop,7,60,7,medium,medium,yes,6,40,below_eye,normal,5,1,1
+19,male,mobile,7,50,7,medium,medium,yes,5,15,below_eye,bright,5,1,2
+19,male,mobile,5,40,4,medium,medium,yes,3,30,eye_level,normal,5,1,2
+20,male,laptop,7,100,4,medium,medium,yes,2,60,below_eye,normal,4,2,3
+32,female,mobile,3,30,4,small,low,no,5,25,below_eye,dim,4,1,1
+18,male,mobile,7,34,15,medium,medium,yes,6,30,eye_level,dim,1,5,4
+18,male,mobile,7,40,4,medium,medium,no,1,20,below_eye,normal,4,1,3
+26,female,mobile,1,15,4,small,normal,no,4,25,below_eye,normal,4,1,1
+33,male,laptop,12,120,4,medium,high,no,2,25,eye_level,normal,3,2,3
+23,female,mobile,14,60,3,small,medium,yes,2,25,eye_level,normal,2,4,3
+18,female,mobile,5,30,6,medium,medium,dim,no,1,25,eye_level,normal,5,1,2
