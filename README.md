@@ -134,7 +134,7 @@ MIT
 
 ---
 
-## 🤖 Models & Methodology
+## Models & Methodology
 
 ### Models Used
 
@@ -401,4 +401,4 @@ This project is created for academic purposes as part of the Machine Learning co
 
 ---
 
-**⭐ If you find this project helpful, please give it a star!**
+** If you find this project helpful, please give it a star!**
