@@ -1,5 +1,4 @@
 age,gender,device_type,daily_hours,session_length,breaks,font_size,brightness,dark_mode,outdoor_time,viewing_distance,screen_height,lighting,sleep_quality,headache_freq,eyestrain_freq
-age,gender,device_type,daily_hours,session_length,breaks,font_size,brightness,dark_mode,outdoor_time,viewing_distance,screen_height,lighting,sleep_quality,headache_freq,eyestrain_freq
 16,female,mobile,2.3,32.4,0,small,high,yes,2.1,40,below_eye,bright,4,2,2
 22,male,laptop,5.7,95.2,2,medium,medium,yes,0.7,55,below_eye,normal,3,3,2
 35,male,laptop,4.1,80.5,1,large,high,no,1.0,70,above_eye,dim,2,1,1
