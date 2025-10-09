@@ -1,4 +1,4 @@
-# 👁️ Vision Status Prediction Using Device Usage Data# Eye Vision Prediction Project
+# Vision Status Prediction Using Device Usage Data# Eye Vision Prediction Project
 
 
 
