@@ -1,6 +1,7 @@
 # Vision Status Prediction Using Device Usage Data# Eye Vision Prediction Project
 
 
+NOTE: THIS IS AN ACADEMIC PROTOTYPPE, NOT FOR CLINICAL USE
 
 A comprehensive machine learning project that predicts vision problems based on electronic device usage patterns and demographic information.## Overview
 
@@ -13,10 +14,6 @@ This project uses machine learning to predict vision status and severity based o
 ## Project Information- `df_new.csv`: Cleaned dataset with all features, including milk consumption and vision label.
 
 - `HeavyVersion.ipynb`: Main analysis and modeling notebook. Includes feature engineering, preprocessing, model training, prediction, and feature importance analysis. Supports prediction of vision status/severity using user input.
-
-**Project By:** Group 15- `MAIML_Assignment_Clean.ipynb`: Alternate notebook for data exploration and modeling.
-
-- `test_split.ipynb`: Notebook for data splitting and validation.
 
 **Team Members:**
 
@@ -46,7 +43,7 @@ This project uses machine learning to predict vision status and severity based o
 
 Predict if someone has vision problems based on how they use electronic devices (phones, laptops, tablets, etc.) and their lifestyle habits. The project aims to identify early warning signs of vision impairment that correlate with device usage patterns.## Usage
 
-1. Open `HeavyVersion.ipynb` in Jupyter or VS Code.
+1. Open `EyeVisionProject.ipynb` in Jupyter or VS Code.
 
 ---2. Run all cells to load data, preprocess, train, and evaluate the model.
 
@@ -58,7 +55,7 @@ Predict if someone has vision problems based on how they use electronic devices 
 
 ### Binary Classification## Example Prediction
 
-Classifies individuals into two categories:```python
+Classifies individuals into two categories:
 
 - **Normal Vision**: No vision impairmentcustom_user = {
 
@@ -80,17 +77,17 @@ Classifies vision status into four severity levels:    'daily_hours': 5,
 
     'dark_mode': 'yes',
 
----    'outdoor_time': 1.0,
+    'outdoor_time': 1.0,
 
     'viewing_distance': 35,
 
 ##  Dataset Features    'screen_height': 'eye_level',
 
-    'lighting': 'normal',
+'lighting': 'normal',
 
 The project uses **16 features** across 4 main categories:    'sleep_quality': 8,
 
-    'headache_freq': 1,
+'headache_freq': 1,
 
 ### 1. Device Usage Patterns    'eyestrain_freq': 2,
 
@@ -250,8 +247,8 @@ pip install pandas numpy matplotlib seaborn scikit-learn xgboost shap
 ### Running the Notebook
 
 1. **Open the notebook**:
-```bash
-jupyter notebook HeavyVersion.ipynb
+```
+jupyter notebook EyeVisionProject.ipynb
 ```
 or open in VS Code
 
@@ -271,7 +268,6 @@ or open in VS Code
 
 ### Making Predictions for New Users
 
-```python
 # Define user profile
 custom_user = {
     'age': 30,
@@ -371,14 +367,6 @@ The notebook includes comprehensive visualizations:
 
 ---
 
-## Contributing
-
-This is an academic project by Group 15. For questions or suggestions:
-- Open an issue on GitHub
-- Contact team members via university email
-
----
-
 ## License
 
 This project is created for academic purposes as part of the Machine Learning coursework.
@@ -393,12 +381,6 @@ This project is created for academic purposes as part of the Machine Learning co
 
 ---
 
-## Contact
-
-**GitHub Repository**: [Eye-Vision-prediction-project](https://github.com/YashShinde39/Eye-Vision-prediction-project)
-
 **Project Lead**: Yash Abasaheb Shinde (BTECH/10780/24)
 
 ---
-
-** If you find this project helpful, please give it a star!**
