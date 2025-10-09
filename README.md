@@ -10,7 +10,7 @@ This project uses machine learning to predict vision status and severity based o
 
 ## Files
 
-## 📋 Project Information- `df_new.csv`: Cleaned dataset with all features, including milk consumption and vision label.
+## Project Information- `df_new.csv`: Cleaned dataset with all features, including milk consumption and vision label.
 
 - `HeavyVersion.ipynb`: Main analysis and modeling notebook. Includes feature engineering, preprocessing, model training, prediction, and feature importance analysis. Supports prediction of vision status/severity using user input.
 
@@ -40,7 +40,7 @@ This project uses machine learning to predict vision status and severity based o
 
 - Model evaluation includes RMSE and R² score.
 
-## 🎯 Project Goal- Feature importance analysis highlights key predictors.
+## Project Goal- Feature importance analysis highlights key predictors.
 
 
 
@@ -52,7 +52,7 @@ Predict if someone has vision problems based on how they use electronic devices 
 
 3. Use the interactive cell to input custom user data and predict vision severity.
 
-## 📊 Prediction Tasks4. Acceptable input for `vision_label`: `normal`, `mild`, `moderate`, `severe`.
+## Prediction Tasks4. Acceptable input for `vision_label`: `normal`, `mild`, `moderate`, `severe`.
 
 
 
@@ -84,7 +84,7 @@ Classifies vision status into four severity levels:    'daily_hours': 5,
 
     'viewing_distance': 35,
 
-## 🔍 Dataset Features    'screen_height': 'eye_level',
+##  Dataset Features    'screen_height': 'eye_level',
 
     'lighting': 'normal',
 
@@ -187,7 +187,7 @@ MIT
 
 ---
 
-## 📈 Key Results
+## Key Results
 
 ### Model Performance (Binary Classification)
 - **XGBoost AUROC**: ~0.85-0.95
@@ -202,15 +202,15 @@ MIT
 5. **sleep_quality**: Quality of sleep
 
 ### Key Insights
-- ✅ Longer device usage correlates with higher vision impairment risk
-- ✅ Proper viewing distance significantly reduces risk
-- ✅ More outdoor time is protective against vision problems
-- ✅ Model performs consistently across age and gender subgroups
-- ✅ Symptom features (headaches, eyestrain) show potential data leakage
+-  Longer device usage correlates with higher vision impairment risk
+-  Proper viewing distance significantly reduces risk
+-  More outdoor time is protective against vision problems
+-  Model performs consistently across age and gender subgroups
+-  Symptom features (headaches, eyestrain) show potential data leakage
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -267,7 +267,7 @@ or open in VS Code
 
 ---
 
-## 💡 Usage Example
+## Usage Example
 
 ### Making Predictions for New Users
 
@@ -301,7 +301,7 @@ print(f"Predicted Vision Severity: {prediction['predicted_vision_severity']}")
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Eye-Vision-prediction-project-3/
@@ -316,7 +316,7 @@ Eye-Vision-prediction-project-3/
 
 ---
 
-## 🔬 Technical Details
+## Technical Details
 
 ### Data Preprocessing
 - **Categorical Encoding**: LabelEncoder for 8 categorical features
@@ -339,7 +339,7 @@ Eye-Vision-prediction-project-3/
 
 ---
 
-## ⚠️ Limitations & Future Work
+## Limitations & Future Work
 
 ### Current Limitations
 1. **Simulated Target Variable**: Vision status created from risk factors, not actual clinical data
@@ -358,20 +358,20 @@ Eye-Vision-prediction-project-3/
 
 ---
 
-## 📊 Visualizations
+## Visualizations
 
 The notebook includes comprehensive visualizations:
-- 📈 Distribution plots for all features
-- 🔥 Confusion matrices (heatmaps)
-- 📉 ROC curves with AUC scores
-- 🎯 Calibration curves
-- 🌟 SHAP summary and waterfall plots
-- 📊 Partial dependence plots
-- 👥 Subgroup performance comparisons
+- Distribution plots for all features
+- Confusion matrices (heatmaps)
+- ROC curves with AUC scores
+- Calibration curves
+- SHAP summary and waterfall plots
+- Partial dependence plots
+- Subgroup performance comparisons
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 This is an academic project by Group 15. For questions or suggestions:
 - Open an issue on GitHub
@@ -379,13 +379,13 @@ This is an academic project by Group 15. For questions or suggestions:
 
 ---
 
-## 📜 License
+## License
 
 This project is created for academic purposes as part of the Machine Learning coursework.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Course instructors and teaching assistants
 - Scikit-learn, XGBoost, and SHAP library developers
@@ -393,7 +393,7 @@ This project is created for academic purposes as part of the Machine Learning co
 
 ---
 
-## 📞 Contact
+## Contact
 
 **GitHub Repository**: [Eye-Vision-prediction-project](https://github.com/YashShinde39/Eye-Vision-prediction-project)
 
