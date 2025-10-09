@@ -73,4 +73,3 @@ age,gender,device_type,daily_hours,session_length,breaks,font_size,brightness,da
 33,male,laptop,12,120,4,medium,high,no,2,25,eye_level,normal,3,2,3
 23,female,mobile,14,60,3,small,medium,yes,2,25,eye_level,normal,2,4,3
 18,female,mobile,5,30,6,medium,medium,dim,no,1,25,eye_level,normal,5,1,2
-27,
