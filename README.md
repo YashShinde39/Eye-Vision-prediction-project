@@ -33,7 +33,7 @@ This project uses machine learning to predict vision status and severity based o
 
 - Categorical features are label-encoded.
 
----- Feature scaling is applied.
+Feature scaling is applied.
 
 - Model evaluation includes RMSE and R² score.
 
@@ -45,7 +45,7 @@ Predict if someone has vision problems based on how they use electronic devices 
 
 1. Open `EyeVisionProject.ipynb` in Jupyter or VS Code.
 
----2. Run all cells to load data, preprocess, train, and evaluate the model.
+2. Run all cells to load data, preprocess, train, and evaluate the model.
 
 3. Use the interactive cell to input custom user data and predict vision severity.
 
@@ -301,13 +301,18 @@ print(f"Predicted Vision Severity: {prediction['predicted_vision_severity']}")
 
 ```
 Eye-Vision-prediction-project-3/
-│
-├── HeavyVersion.ipynb          # Main Jupyter notebook with complete analysis
-├── df_new.csv                  # Dataset (85 rows × 18 columns)
-├── README.md                   # Project documentation (this file)
-├── MAIML_Assignment_Clean.ipynb # Alternate simplified notebook
-├── maiml_project.ipynb         # Additional project notebook
-└── test_split.ipynb            # Test/validation experiments
+
+HeavyVersion.ipynb          # Main Jupyter notebook with complete analysis
+
+df_new.csv                  # Dataset (85 rows × 18 columns)
+
+README.md                   # Project documentation (this file)
+
+MAIML_Assignment_Clean.ipynb # Alternate simplified notebook
+
+maiml_project.ipynb         # Additional project notebook
+
+test_split.ipynb            # Test/validation experiments
 ```
 
 ---
