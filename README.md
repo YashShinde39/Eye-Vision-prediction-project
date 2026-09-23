@@ -200,19 +200,6 @@ See [`docs/LIMITATIONS_AND_ETHICS.md`](docs/LIMITATIONS_AND_ETHICS.md) for a ful
 
 ---
 
-## 👥 Team
-
-| Name | Roll Number |
-|------|-------------|
-| Arpit Raj | BTECH/10780/24 |
-| Ayush Marvin Bilung | BTECH/10579/24 |
-| Palash Siddharth Mendhe | BTECH/10536/24 |
-| Pogula Raja Vardhan Reddy | BTECH/10985/24 |
-| Yash Abasaheb Shinde | BTECH/10780/24 |
-
----
-
 ## 📄 License
 
-This project is released under the [MIT License](LICENSE).  
-For academic and educational use. Not for clinical or diagnostic use.
+This project is released under the [MIT License](LICENSE).
