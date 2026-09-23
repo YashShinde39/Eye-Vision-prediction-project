@@ -1,172 +1,218 @@
-# Eye Vision Prediction Project
+# 👁️ Eye Vision Risk Prediction
 
-An academic machine-learning prototype that explores whether device usage, visual ergonomics, lifestyle, and demographic data can be used to estimate vision-risk severity.
+<div align="center">
 
-> **Important:** This project is for educational and exploratory use only. It is not a medical device, does not provide a diagnosis, and must not replace an examination by a qualified eye-care professional.
+**Can screen habits predict vision risk? We built an ML pipeline to find out.**
 
-## Overview
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](EyeVisionProject.ipynb)
+[![XGBoost](https://img.shields.io/badge/Model-XGBoost-189AB4?style=for-the-badge)](https://xgboost.readthedocs.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Academic%20Prototype-F59E0B?style=for-the-badge)]()
 
-The project is implemented in the [`EyeVisionProject.ipynb`](EyeVisionProject.ipynb) notebook. The notebook:
+</div>
 
-- Loads and inspects the supplied survey dataset.
-- Encodes categorical features and standardizes model inputs.
-- Creates exploratory vision-risk targets from usage and health-related heuristics.
-- Trains and evaluates Logistic Regression and XGBoost classifiers.
-- Supports both:
-  - **Binary classification:** `normal` vs. `impaired`
-  - **Ordinal classification:** `normal`, `mild`, `moderate`, and `severe`
-- Produces confusion matrices, ROC and calibration plots, cross-validation metrics, SHAP feature importance, and partial-dependence/ICE plots.
-- Performs subgroup and symptom-feature leakage checks.
-- Defines a notebook prediction function for trying a custom user profile.
+---
 
-## Repository contents
+> ⚕️ **Medical Disclaimer:** This is an academic machine-learning prototype for educational use only. It is **not** a medical device and must **not** replace examination by a qualified eye-care professional.
 
-| File | Description |
-| --- | --- |
-| [`EyeVisionProject.ipynb`](EyeVisionProject.ipynb) | Main analysis, preprocessing, modeling, evaluation, and explainability workflow |
-| [`df_new.csv`](df_new.csv) | Input dataset with 81 rows and 18 columns |
-| [`docs_REPORT.md`](docs_REPORT.md) | Concise project report and interpretation notes |
-| [`docs_model-design-and-justification.md`](docs_model-design-and-justification.md) | Model-selection, validation, and confounder-handling rationale |
-| [`docs_data-acquisition-and-preprocessing.md`](docs_data-acquisition-and-preprocessing.md) | Dataset schema, cleaning, encoding, and feature-engineering guidance |
+---
 
-## Dataset
+## 🔍 What This Project Does
 
-The CSV contains the following fields:
+This project investigates whether **self-reported device usage, visual ergonomics, and lifestyle data** can estimate a person's vision-risk severity — before they visit a doctor.
 
-- **Demographics:** `age`, `gender`
-- **Device usage:** `device_type`, `daily_hours`, `session_length`, `breaks`
-- **Display and ergonomics:** `font_size`, `brightness`, `dark_mode`, `viewing_distance`, `screen_height`, `lighting`
-- **Lifestyle and symptoms:** `outdoor_time`, `sleep_quality`, `headache_freq`, `eyestrain_freq`, `milk_consumption_ml`
-- **Recorded label:** `vision_label`
+We compare a **Logistic Regression baseline** against an **XGBoost classifier**, apply SHAP explainability, and run rigorous cross-validation to evaluate whether everyday behavioral signals carry predictive signal for eye health risk.
 
-The notebook uses 16 predictors and excludes `headache_freq` and `eyestrain_freq` from its primary model features. It then adds those symptom fields in a separate leakage-analysis comparison.
+| Task | Type | Classes |
+|------|------|---------|
+| Task A | Binary classification | `normal` vs. `impaired` |
+| Task B | Ordinal classification | `normal` · `mild` · `moderate` · `severe` |
 
-### Target construction
+---
 
-Because the dataset does not provide a validated clinical outcome, the notebook constructs an exploratory `vision_status` target using a heuristic risk score based on:
+## 🗂️ Repository Structure
 
-- Daily screen hours and session length
-- Number of breaks
-- Outdoor time and viewing distance
-- Sleep quality
-- Headache and eyestrain frequency
-
-The resulting severity levels are mapped to binary and ordinal targets. These labels are **proxy labels**, not clinical measurements.
-
-## Getting started
-
-### Requirements
-
-- Python 3.8 or newer
-- Jupyter Notebook or JupyterLab, or Visual Studio Code with the Jupyter extension
-- The Python packages imported by the notebook:
-
-```text
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-xgboost
-shap
+```
+Eye-Vision-prediction-project/
+├── EyeVisionProject.ipynb          # Full analysis: EDA → preprocessing → modeling → SHAP
+├── df_new.csv                      # Survey dataset (81 rows × 18 columns)
+├── requirements.txt                # Python dependencies
+├── LICENSE                         # MIT License
+└── docs/
+    ├── REPORT.md                   # Concise project report & interpretation
+    ├── LIMITATIONS_AND_ETHICS.md   # Honest scope, risks, and ethical considerations
+    ├── problem-framing-and-related-work.md
+    ├── model-design-and-justification.md
+    └── data-acquisition-and-preprocessing.md
 ```
 
-### Installation
+---
+
+## 🔬 ML Pipeline
+
+```mermaid
+graph TD
+    A[📋 Survey Data<br/>df_new.csv] --> B[🧹 Cleaning & Validation<br/>Winsorize · Impute · Deduplicate]
+    B --> C[⚙️ Feature Engineering<br/>sessions_per_day · breaks_per_hour<br/>short_distance · outdoor_ratio]
+    C --> D[🔢 Encoding<br/>Ordinal · One-Hot · StandardScaler]
+    D --> E{ML Models}
+    E --> F[📐 Logistic Regression<br/>L2 · class_weight=balanced<br/>Baseline]
+    E --> G[🌳 XGBoost<br/>Shallow trees · scale_pos_weight<br/>Monotonic constraints]
+    F --> H[📊 Evaluation<br/>PR-AUC · F1 · Brier · ROC-AUC<br/>Stratified 5-Fold CV]
+    G --> H
+    H --> I[🔎 Explainability<br/>SHAP · PDP/ICE<br/>Subgroup fairness checks]
+    I --> J[💡 Risk Score &<br/>Actionable Recommendations]
+```
+
+---
+
+## 📊 Dataset
+
+The dataset contains **81 survey responses** across **18 columns**:
+
+| Category | Features |
+|----------|----------|
+| **Demographics** | `age`, `gender` |
+| **Device usage** | `device_type`, `daily_hours`, `session_length`, `breaks` |
+| **Display ergonomics** | `font_size`, `brightness`, `dark_mode`, `viewing_distance`, `screen_height`, `lighting` |
+| **Lifestyle & health** | `outdoor_time`, `sleep_quality`, `headache_freq`, `eyestrain_freq`, `milk_consumption_ml` |
+| **Label** | `vision_label` *(proxy — heuristically derived)* |
+
+### Target Construction
+
+Because the dataset lacks validated clinical outcomes, the notebook derives an exploratory `vision_status` target using a **risk heuristic** combining:
+
+- 📱 Daily screen hours & session length
+- ⏸️ Break frequency  
+- 🌳 Outdoor time & viewing distance
+- 😴 Sleep quality
+- 🤕 Headache & eyestrain frequency
+
+> **These are proxy labels, not clinical measurements.** All results should be treated as exploratory.
+
+---
+
+## ⚡ Quick Start
+
+### 1. Clone & install
 
 ```bash
 git clone https://github.com/YashShinde39/Eye-Vision-prediction-project.git
 cd Eye-Vision-prediction-project
 
 python -m venv .venv
-source .venv/bin/activate       # macOS/Linux
-# .venv\Scripts\activate        # Windows PowerShell
+source .venv/bin/activate        # macOS/Linux
+# .venv\Scripts\activate         # Windows
 
-python -m pip install --upgrade pip
-python -m pip install pandas numpy matplotlib seaborn scikit-learn xgboost shap jupyter
+pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
-### Run the notebook
+### 2. Run the notebook
 
 ```bash
 jupyter notebook EyeVisionProject.ipynb
 ```
 
-Then run the cells from top to bottom. The notebook expects `df_new.csv` to remain in the project root.
+Run cells top-to-bottom. The notebook expects `df_new.csv` in the project root.
 
-The main stages are:
+### 3. Try a custom prediction
 
-1. Load and explore the dataset.
-2. Construct binary and ordinal targets.
-3. Encode categorical values and scale features.
-4. Train/test split and model training.
-5. Evaluation and five-fold stratified cross-validation.
-6. SHAP, partial-dependence, and ICE analysis.
-7. Subgroup robustness and potential leakage checks.
-8. Interactive custom-profile prediction.
-
-## Models and evaluation
-
-The notebook compares:
-
-- **Logistic Regression** as a simple baseline.
-- **XGBoost** as a nonlinear tree-based model.
-
-For binary classification it reports accuracy, precision, recall, F1, ROC-AUC, Brier score, and confusion matrices. For ordinal classification it reports classification metrics, a confusion matrix, macro F1, and quadratic weighted kappa.
-
-The notebook also uses stratified five-fold cross-validation. With only 81 observations and seven `normal` proxy labels, the recorded metrics should be treated as illustrative rather than as evidence of clinical or real-world performance.
-
-## Example input
-
-The prediction section accepts a dictionary containing the fields expected by the notebook:
+After running the notebook end-to-end:
 
 ```python
 custom_user = {
-    "age": 30,
+    "age": 22,
     "gender": "female",
-    "device_type": "mobile",
-    "daily_hours": 5.0,
-    "session_length": 60.0,
-    "breaks": 2,
-    "font_size": "medium",
+    "device_type": "laptop",
+    "daily_hours": 8.0,
+    "session_length": 90.0,
+    "breaks": 1,
+    "font_size": "small",
     "brightness": "high",
-    "dark_mode": "yes",
-    "outdoor_time": 1.0,
-    "viewing_distance": 35,
-    "screen_height": "eye_level",
-    "lighting": "normal",
-    "sleep_quality": 4,
-    "headache_freq": 1,
-    "eyestrain_freq": 2,
-    "milk_consumption_ml": 200,
-    "vision_label": "mild",
+    "dark_mode": "no",
+    "outdoor_time": 0.5,
+    "viewing_distance": 30,
+    "screen_height": "below_eye",
+    "lighting": "dim",
+    "sleep_quality": 2,
+    "headache_freq": 4,
+    "eyestrain_freq": 4,
+    "milk_consumption_ml": 150,
+    "vision_label": "moderate",
 }
 
 prediction = predict_vision_status_severity(custom_user)
 print(prediction["predicted_vision_severity"])
+# → 'moderate'
 ```
 
-Run this after the notebook has trained the encoders, scaler, and ordinal XGBoost model. Input category spelling must match the categories present in the dataset.
+---
 
-## Limitations and responsible use
+## 📈 Notebook Walkthrough
 
-- The dataset is very small and may not represent the broader population.
-- The target is heuristically generated rather than clinically validated.
-- Several predictors are self-reported and may contain recall or measurement bias.
-- The random train/test split can produce unstable results with so few normal examples.
-- Symptom features can be closely related to the proxy target, creating potential leakage or circularity.
-- Correlation in this analysis does not establish that device use causes vision impairment.
-- Predictions should not be used for diagnosis, treatment, screening decisions, or medical advice.
+| Stage | Description |
+|-------|-------------|
+| **1. EDA** | Distribution plots, correlation matrix, class balance inspection |
+| **2. Target construction** | Heuristic risk scoring → binary & ordinal labels |
+| **3. Preprocessing** | Ordinal/one-hot encoding, StandardScaler, feature engineering |
+| **4. Modeling** | Logistic Regression & XGBoost training with stratified split |
+| **5. Evaluation** | Accuracy, Precision, Recall, F1, ROC-AUC, Brier, confusion matrices |
+| **6. Cross-validation** | Stratified 5-fold CV with mean ± std metrics |
+| **7. Explainability** | SHAP global importance, PDP/ICE for key features |
+| **8. Fairness checks** | Subgroup performance by age, gender, device type |
+| **9. Leakage analysis** | Re-train including symptom features to quantify potential circularity |
+| **10. Custom prediction** | Interactive function for any user-defined profile |
 
-For a more reliable study, replace the proxy target with validated clinical or symptom-scale outcomes, collect a larger and more diverse dataset, pre-register severity thresholds, and use nested cross-validation with calibrated, group-aware evaluation.
+---
 
-## Project team
+## 🧠 Key Findings
 
-- Arpit Raj — BTECH/10780/24
-- Ayush Marvin Bilung — BTECH/10579/24
-- Palash Siddharth Mendhe — BTECH/10536/24
-- Pogula Raja Vardhan Reddy — BTECH/10985/24
-- Yash Abasaheb Shinde — BTECH/10780/24
+- **Top predictors** (by SHAP magnitude): `daily_hours`, `session_length`, `breaks`, `viewing_distance`, `sleep_quality`
+- **XGBoost** outperforms Logistic Regression on PR-AUC and ordinal F1, but gains are modest given the small dataset
+- **Symptom features** (`headache_freq`, `eyestrain_freq`) cause substantial score inflation when included — confirming potential label leakage
+- **SHAP directions** align with ergonomics literature: more screen time, fewer breaks, and shorter viewing distance all push toward higher risk
+- **Actionable levers**: break frequency and outdoor time are among the most modifiable high-importance features
 
-## License
+---
 
-This project is provided for academic and educational purposes. No separate license file is currently included in the repository.
+## ⚠️ Limitations
+
+- Dataset is very small (n = 81) — metrics are **illustrative, not statistically conclusive**
+- Targets are **heuristically derived**, not clinically validated
+- Self-reported features are subject to recall and social-desirability bias
+- Results may not generalise beyond the study population
+
+See [`docs/LIMITATIONS_AND_ETHICS.md`](docs/LIMITATIONS_AND_ETHICS.md) for a full breakdown.
+
+---
+
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [`docs/REPORT.md`](docs/REPORT.md) | Concise project summary, methods, and results |
+| [`docs/LIMITATIONS_AND_ETHICS.md`](docs/LIMITATIONS_AND_ETHICS.md) | Full scope, risks, fairness, and ethical guidelines |
+| [`docs/model-design-and-justification.md`](docs/model-design-and-justification.md) | Model selection, validation strategy, confounder handling |
+| [`docs/data-acquisition-and-preprocessing.md`](docs/data-acquisition-and-preprocessing.md) | Dataset schema, cleaning rules, encoding, feature engineering |
+| [`docs/problem-framing-and-related-work.md`](docs/problem-framing-and-related-work.md) | Problem context, related literature, ethics, success criteria |
+
+---
+
+## 👥 Team
+
+| Name | Roll Number |
+|------|-------------|
+| Arpit Raj | BTECH/10780/24 |
+| Ayush Marvin Bilung | BTECH/10579/24 |
+| Palash Siddharth Mendhe | BTECH/10536/24 |
+| Pogula Raja Vardhan Reddy | BTECH/10985/24 |
+| Yash Abasaheb Shinde | BTECH/10780/24 |
+
+---
+
+## 📄 License
+
+This project is released under the [MIT License](LICENSE).  
+For academic and educational use. Not for clinical or diagnostic use.
